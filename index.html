@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            color: #00FFFF;
+            text-align: center;
+            text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 15px #00FFFF;
+            margin-bottom: 15px;
+            font-size: 2em;   
+        }
+    </style>
+    <title>🔢Calculadora</title>
+    <style> 
+    #calculator {
+        border: 2px solid black;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #1a1a1a;
+        box-shadow: 0 0 20px #8A2BE2;
+        width: 300px;
+    }
+    #calculator button {
+        flex: 1;
+        margin: 2px;
+        padding: 20px;
+        font-size: 20px;
+        background-color: #333;
+        color: #00FFFF;
+        border: 1px solid #222;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+        text-shadow: 0 0 5px #00FFFF;
+        }
+
+    #calculator button:hover {
+        background-color: #8A2BE2;
+        color: #FFF;
+        text-shadow: none;
+    }
+    #calculator > div {
+        display: flex;
+    }
+    body {  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #000;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     }
+     input {
+        width: 100%;
+        font-size: 28px;
+        padding: 15px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        border: 2px solid #00FFFF;
+        border-radius: 8px;
+        background-color: #0d0d0d;
+        color: #00FFFF;
+        text-align: right;
+        box-shadow: inset 0 0 10px #00FFFF;
+        font-family: 'Courier New', monospace;
+     }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>CALCULADORA</h1>
+        <h2>By Rafilsk</h2>
+        <input type="text" readonly/>
+
+    <div> 
+        <button>%</button>
+        <button>/</button>
+        <button>*</button>
+        <button>-</button>
+    </div>
+
+    <div>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+    </div>
+
+    <div>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+    </div>
+    <div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+    </div>
+
+    <div>
+        <button>0</button>
+        <button>C</button>
+        <button>=</button>
+    </div>
+    </div>
+    <script>
+    const input = document.querySelector('input');
+    const buttons = document.querySelectorAll('#calculator button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.textContent;
+            console.log(buttonText);
+
+            if (buttonText === 'C') {
+                input.value = ''; 
+
+            } else if (buttonText === '%') {
+                input.value = parseFloat(input.value) / 100;  
+
+            } else if (buttonText === '=') {
+                try {
+                    input.value = eval(input.value);
+                } catch (e) {
+                    input.value = 'Error';
+                }
+            } else {
+                input.value += buttonText;
+            }
+        });
+    });
+    </script>
+</body>
+</html>
